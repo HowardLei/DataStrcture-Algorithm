@@ -105,6 +105,7 @@ int Get_List(SeqList *list, int data) {
     }
     return 0;
 }
+// 释放表的内存
 void Destory_List(SeqList *list) {
     free(list);
 }
