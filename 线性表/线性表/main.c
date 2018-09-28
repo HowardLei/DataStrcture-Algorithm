@@ -42,7 +42,7 @@ SeqList *Init_List()  {
  @return 表长
  */
 int Length_List(SeqList *list) {
-    // 由于表中元素元素就是 last 指针的
+    // 由于表中元素元素就是 last 指针的，所以说表的长度为 last + 1
     return (list->last) + 1;
 }
 /**
