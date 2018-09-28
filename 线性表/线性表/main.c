@@ -60,8 +60,8 @@ void Insert_List(SeqList *list, int location, int data) {
         printf("对不起，插入位置有误\n");
     } else {
         // 1、先移动数据，注意：从最后一个开始挪动，挪动到添加的位置
-        for (int i = Length_List(list) - 1; i > location; i--) {
-            list->id[i + 1] = list->id[i];
+        for (int i = list->last; i > location; i--) {
+            list->id[i] = list->id[i - 1];
         }
         // 2、向空的空间中添加元素
         list->id[location] = data;
@@ -105,6 +105,7 @@ int Get_List(SeqList *list, int data) {
     }
     return 0;
 }
+
 // 释放表的内存
 void Destory_List(SeqList *list) {
     free(list);
@@ -112,13 +113,11 @@ void Destory_List(SeqList *list) {
 int main(int argc, const char * argv[]) {
     SeqList *s1 = Init_List();
     for (int i = 0; i <= MAXSIZE - 1; i++) {
-        Insert_List(s1, i, i);
+        Insert_List(s1, i, arc4random_uniform(128));
     }
     for (int i = 0; i < Length_List(s1); i++) {
-        printf("%d:%d\n",i, s1->id[i]);
+        printf("%d:%d\n", i, s1->id[i]);
     }
-    printf("---------\n");
-    Delete_List(s1, 12);
     Destory_List(s1);
     return 0;
 }
