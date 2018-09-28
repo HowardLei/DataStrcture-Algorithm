@@ -103,20 +103,103 @@ int Get_List(SeqList *list, int data) {
             return i;
         }
     }
-    return 0;
+    return -1;
 }
-
-// 释放表的内存
+/**
+ 输入一个值，做一个划分。左边全都是小于它的值，右边都是大于它的值
+ @param list 表
+ @param data 数据
+ */
+// FIXME: 算法总是不对
+void Part(SeqList *list, int data) {
+    // 判断这个数据在这个数组中的哪个位置，如果不存在的话返回值为 -1
+    int location = Get_List(list, data);
+    // 1、判断变量是否存在于列表当中，如果存在
+    if (location != -1) {
+        // 1、创建两个临时变量，用于接受数据位置
+        int i = 0, j = Length_List(list) - 1;
+        // 设置寻找到的位置为 0
+        list->id[location] = 0;
+        // 2、遍历这个表
+        for (int s = i; s < Length_List(list); s++) {
+            // 寻找这一组循环中大的值，找到以后就将值与 0 值进行交换
+            if (list->id[s] > data) {
+                i = s;
+                list->id[location] = list->id[i];
+                list->id[i] = 0;
+                location = i;
+            }
+            // 从后往前找，找小的值
+            for (int u = j; u > i; u--) {
+                if (list->id[u] < data && list->id[u] != 0) {
+                    j = u;
+                    list->id[location] = list->id[j];
+                    list->id[j] = 0;
+                    location = j;
+                    // 找到以后直接跳出循环
+                    continue;
+                }
+            }
+        }
+        list->id[location] = data;
+    } else {
+        Insert_List(list, list->last, data);
+        Part(list, data);
+    }
+    for (int i = 0; i < Length_List(list); i++) {
+        printf("%d\t", list->id[i]);
+    }
+}
+/**
+ 合并多表
+ @param list1 表1
+ @param list2 表2
+ @param list3 合并之后的表
+ */
+void Merge(SeqList *list1, SeqList *list2, SeqList *list3) {
+}
+/**
+ 释放表的内存
+ @param list 需要释放的表
+ */
 void Destory_List(SeqList *list) {
     free(list);
 }
+/**
+ 为列表排序（升序）
+ // 方法：选择排序法
+ @param list 需要进行排序的列表
+ */
+// FIXME: 算法错误，需要重写
+void Sequence(SeqList *list) {
+    // 创建 3 个变量，1 个记录索引的，2 个循环变量
+    int a, b, c;
+    for (a = 0; a < Length_List(list) - 1; a++) {
+        c = a;
+        for (b = a + 1; b < Length_List(list); b++) {
+            if (list->id[a] > list->id[b]) {
+                c = b;
+            }
+        }
+        if (c != a) {
+            int temp = list->id[c];
+            list->id[c] = list->id[a];
+            list->id[a] = temp;
+        }
+    }
+}
 int main(int argc, const char * argv[]) {
     SeqList *s1 = Init_List();
-    for (int i = 0; i <= MAXSIZE - 1; i++) {
-        Insert_List(s1, i, arc4random_uniform(128));
+    for (int i = 0; i < 10; i++) {
+        Insert_List(s1, i, arc4random_uniform(14));
     }
-    for (int i = 0; i < Length_List(s1); i++) {
-        printf("%d:%d\n", i, s1->id[i]);
+    for (int i = 0; i < 10; i++) {
+        printf("%d\t", s1->id[i]);
+    }
+    printf("----------\n");
+    Sequence(s1);
+    for (int i = 0; i < 10; i++) {
+        printf("%d\t", s1->id[i]);
     }
     Destory_List(s1);
     return 0;
