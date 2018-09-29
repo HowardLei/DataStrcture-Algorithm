@@ -89,8 +89,7 @@ void Delete_List(SeqList *list, int location) {
     }
 }
 /**
- 获得表中元素的位置
-
+ 获得表中元素的位置（如果出现多次，则返回元素第一次出现的位置）
  @param list 表
  @param data 数据
  @return 元素位置，如果没有，返回 0
@@ -114,40 +113,38 @@ int Get_List(SeqList *list, int data) {
 void Part(SeqList *list, int data) {
     // 判断这个数据在这个数组中的哪个位置，如果不存在的话返回值为 -1
     int location = Get_List(list, data);
-    // 1、判断变量是否存在于列表当中，如果存在
+    // 判断变量是否存在于列表当中
     if (location != -1) {
         // 1、创建两个临时变量，用于接受数据位置
         int i = 0, j = Length_List(list) - 1;
         // 设置寻找到的位置为 0
         list->id[location] = 0;
         // 2、遍历这个表
-        for (int s = i; s < Length_List(list); s++) {
+        for (int s = 0; s < Length_List(list); s++) {
+            i = s;
             // 寻找这一组循环中大的值，找到以后就将值与 0 值进行交换
             if (list->id[s] > data) {
                 i = s;
                 list->id[location] = list->id[i];
                 list->id[i] = 0;
                 location = i;
-            }
-            // 从后往前找，找小的值
-            for (int u = j; u > i; u--) {
-                if (list->id[u] < data && list->id[u] != 0) {
-                    j = u;
-                    list->id[location] = list->id[j];
-                    list->id[j] = 0;
-                    location = j;
-                    // 找到以后直接跳出循环
-                    continue;
+                for (int u = j; u > i; u--) {
+                    if (list->id[u] < data && list->id[u] != 0) {
+                        j = u;
+                        list->id[location] = list->id[j];
+                        list->id[j] = 0;
+                        location = j;
+                        // 找到以后直接跳出循环
+                        continue;
+                    }
                 }
             }
         }
+        // 从后往前找，找小的值
         list->id[location] = data;
     } else {
         Insert_List(list, list->last, data);
         Part(list, data);
-    }
-    for (int i = 0; i < Length_List(list); i++) {
-        printf("%d\t", list->id[i]);
     }
 }
 /**
@@ -157,6 +154,7 @@ void Part(SeqList *list, int data) {
  @param list3 合并之后的表
  */
 void Merge(SeqList *list1, SeqList *list2, SeqList *list3) {
+    
 }
 /**
  释放表的内存
@@ -170,14 +168,13 @@ void Destory_List(SeqList *list) {
  // 方法：选择排序法
  @param list 需要进行排序的列表
  */
-// FIXME: 算法错误，需要重写
 void Sequence(SeqList *list) {
     // 创建 3 个变量，1 个记录索引的，2 个循环变量
     int a, b, c;
     for (a = 0; a < Length_List(list) - 1; a++) {
         c = a;
         for (b = a + 1; b < Length_List(list); b++) {
-            if (list->id[a] > list->id[b]) {
+            if (list->id[c] > list->id[b]) {
                 c = b;
             }
         }
@@ -188,6 +185,7 @@ void Sequence(SeqList *list) {
         }
     }
 }
+
 int main(int argc, const char * argv[]) {
     SeqList *s1 = Init_List();
     for (int i = 0; i < 10; i++) {
@@ -197,7 +195,7 @@ int main(int argc, const char * argv[]) {
         printf("%d\t", s1->id[i]);
     }
     printf("----------\n");
-    Sequence(s1);
+    Part(s1, 2);
     for (int i = 0; i < 10; i++) {
         printf("%d\t", s1->id[i]);
     }
