@@ -109,21 +109,26 @@ int Get_List(SeqList *list, int data) {
  @param list 表
  @param data 数据
  */
-// FIXME: 算法总是不对
+// 注意：这个只是保证左边都是保证要求，并不是完全排序）
 void Part(SeqList *list, int data) {
+    // 一、创建三个变量。控制起始，终止，中间变量。
     int start = 0, end = 0, temp = 0;
-    for (start = 0, end = list->last; start < end; start++) {
+    // 二、遍历这个数组，注意：数组中的遍历不是在第一个 for 循环中写，是通过下边的循环来控制。
+    for (start = 0, end = list->last; start < end;) {
+    // 控制 start 索引，找到前面比 data 大的值
         for (; start < end; start++) {
             if (list->id[start] >= data) {
                 break;
             }
         }
+    // 控制 end 索引，找到后边比 data 小于等于的值
         for (; start < end; end--) {
             if (list->id[end] < data) {
                 break;
             }
         }
     }
+  // 对值进行交换，注意：交换的时候不一定保证 start 的索引比 end 索引小，需要进行判断再进行交换
     if (start < end) {
         temp = list->id[start];
         list->id[start] = list->id[end];
