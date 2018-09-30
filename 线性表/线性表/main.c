@@ -111,40 +111,23 @@ int Get_List(SeqList *list, int data) {
  */
 // FIXME: 算法总是不对
 void Part(SeqList *list, int data) {
-    // 判断这个数据在这个数组中的哪个位置，如果不存在的话返回值为 -1
-    int location = Get_List(list, data);
-    // 判断变量是否存在于列表当中
-    if (location != -1) {
-        // 1、创建两个临时变量，用于接受数据位置
-        int i = 0, j = Length_List(list) - 1;
-        // 设置寻找到的位置为 0
-        list->id[location] = 0;
-        // 2、遍历这个表
-        for (int s = 0; s < Length_List(list); s++) {
-            i = s;
-            // 寻找这一组循环中大的值，找到以后就将值与 0 值进行交换
-            if (list->id[s] > data) {
-                i = s;
-                list->id[location] = list->id[i];
-                list->id[i] = 0;
-                location = i;
-                for (int u = j; u > i; u--) {
-                    if (list->id[u] < data && list->id[u] != 0) {
-                        j = u;
-                        list->id[location] = list->id[j];
-                        list->id[j] = 0;
-                        location = j;
-                        // 找到以后直接跳出循环
-                        continue;
-                    }
-                }
+    int start = 0, end = 0, temp = 0;
+    for (start = 0, end = list->last; start < end; start++) {
+        for (; start < end; start++) {
+            if (list->id[start] >= data) {
+                break;
             }
         }
-        // 从后往前找，找小的值
-        list->id[location] = data;
-    } else {
-        Insert_List(list, list->last, data);
-        Part(list, data);
+        for (; start < end; end--) {
+            if (list->id[end] < data) {
+                break;
+            }
+        }
+    }
+    if (start < end) {
+        temp = list->id[start];
+        list->id[start] = list->id[end];
+        list->id[end] = temp;
     }
 }
 /**
@@ -208,7 +191,7 @@ int main(int argc, const char * argv[]) {
     for (int i = 0; i < 10; i++) {
         printf("%d\t", s1->id[i]);
     }
-    printf("----------\n");
+    printf("\n");
     Part(s1, 2);
     for (int i = 0; i < 10; i++) {
         printf("%d\t", s1->id[i]);
