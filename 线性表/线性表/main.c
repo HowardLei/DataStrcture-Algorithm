@@ -37,7 +37,6 @@ SeqList *Init_List()  {
 }
 /**
  表的长度
-
  @param list 表
  @return 表长
  */
@@ -47,7 +46,6 @@ int Length_List(SeqList *list) {
 }
 /**
  向表中添加元素
-
  @param list 表
  @param data 添加数据
  @param location 数据所添加的位置的索引（遵守 C 语言的规则）
@@ -71,7 +69,6 @@ void Insert_List(SeqList *list, int location, int data) {
 }
 /**
  删除表中指定位置的元素
-
  @param list 操作的表
  @param location 元素的位置
  */
@@ -105,7 +102,7 @@ int Get_List(SeqList *list, int data) {
     return -1;
 }
 /**
- 输入一个值，做一个划分。左边全都是小于它的值，右边都是大于它的值
+ 输入一个值，做一个划分。左边全都是小于等于它的值，右边都是大于它的值
  @param list 表
  @param data 数据
  */
@@ -117,22 +114,22 @@ void Part(SeqList *list, int data) {
     for (start = 0, end = list->last; start < end;) {
     // 控制 start 索引，找到前面比 data 大的值
         for (; start < end; start++) {
-            if (list->id[start] >= data) {
+            if (list->id[start] > data) {
                 break;
             }
         }
     // 控制 end 索引，找到后边比 data 小于等于的值
         for (; start < end; end--) {
-            if (list->id[end] < data) {
+            if (list->id[end] <= data) {
                 break;
             }
         }
-    }
-  // 对值进行交换，注意：交换的时候不一定保证 start 的索引比 end 索引小，需要进行判断再进行交换
-    if (start < end) {
-        temp = list->id[start];
-        list->id[start] = list->id[end];
-        list->id[end] = temp;
+        // 对值进行交换，注意：交换的时候不一定保证 start 的索引比 end 索引小，需要进行判断再进行交换
+        if (start < end) {
+            temp = list->id[start];
+            list->id[start] = list->id[end];
+            list->id[end] = temp;
+        }
     }
 }
 /**
