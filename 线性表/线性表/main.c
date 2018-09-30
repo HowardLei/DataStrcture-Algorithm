@@ -154,7 +154,21 @@ void Part(SeqList *list, int data) {
  @param list3 合并之后的表
  */
 void Merge(SeqList *list1, SeqList *list2, SeqList *list3) {
-    
+    int i = 0, j = 0, k = 0;
+    while (i <= list1->last && j <= list2->last) {
+        if (list1->id[i] < list2->id[i]) {
+            list3->id[k++] = list1->id[i++];
+        } else {
+            list3->id[k++] = list2->id[i++];
+        }
+    }
+    while (i <= list1->last) {
+        list3->id[k++] = list1->id[i++];
+    }
+    while (j <= list2->last) {
+        list3->id[k++] = list2->id[j++];
+    }
+    list3->last = k - 1;
 }
 /**
  释放表的内存
