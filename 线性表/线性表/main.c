@@ -187,15 +187,17 @@ void Sequence(SeqList *list) {
 
 int main(int argc, const char * argv[]) {
     SeqList *s1 = Init_List();
-    for (int i = 0; i < 10; i++) {
-        Insert_List(s1, i, arc4random_uniform(14));
-    }
-    for (int i = 0; i < 10; i++) {
+    Insert_List(s1, 0, 21);
+    Insert_List(s1, 1, 2);
+    Insert_List(s1, 2, 31);
+    Insert_List(s1, 3, 16);
+    Insert_List(s1, 4, 5);
+    for (int i = 0; i < 5; i++) {
         printf("%d\t", s1->id[i]);
     }
     printf("\n");
-    Part(s1, 2);
-    for (int i = 0; i < 10; i++) {
+    Part(s1, 16);
+    for (int i = 0; i < 5; i++) {
         printf("%d\t", s1->id[i]);
     }
     Destory_List(s1);
