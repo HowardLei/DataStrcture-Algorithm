@@ -7,6 +7,7 @@
     无论链表是否为空，头指针均不为空。因为头指针是链表的必要元素。
  注意：存储的内容与顺序表不相同的是：顺序表存储的是位置，而链表存储的是元素以及后继元素所处的地址。
  */
+// 创建一个链表的结构。注意：这个链表当中。头指针变量用 LinkList 变量来表示。结点变量用 Lnode 来表示。
 typedef struct inode{
     int data;
     struct inode *next;
@@ -16,9 +17,15 @@ typedef struct inode{
  创建一个链表
  @return 链表
  */
-LinkList createANode() {
+LinkList createAList() {
+    // 1、创建一个链表
     LinkList s1 = malloc(sizeof(LinkList));
-    s1->next = NULL;
+    // 2、创建一个结点
+    Lnode *node = malloc(sizeof(Lnode));
+    int a = 0;
+    scanf("%d", &a);
+    node->data = a;
+    // 最后返回链表
     return s1;
 }
 /**
@@ -32,7 +39,8 @@ void deleteNode(LinkList node) {
 }
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-
+        LinkList l1 = createAList();
+        Lnode *s1 = malloc(sizeof(Lnode));
     }
     return 0;
 }
