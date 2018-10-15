@@ -14,17 +14,27 @@ typedef struct inode{
 } Lnode, *LinkList;
 
 /**
- 创建一个链表
+ 创建一个链表，并从表头添加元素（倒序添加）
  @return 链表
  */
-LinkList createAList() {
-    // 1、创建一个链表
-    LinkList s1 = malloc(sizeof(LinkList));
-    // 2、创建一个结点
-    Lnode *node = malloc(sizeof(Lnode));
+LinkList createAListFromForward() {
+    // 1、创建一个链表头
+    LinkList s1 = NULL;
+    Lnode *node;
+    // 2、设置元素值
     int a = 0;
+    NSLog(@"请输入一个值：");
     scanf("%d", &a);
-    node->data = a;
+    // 判断元素的值，如果为 -1 ，则取消循环
+    while (a != EOF) {
+        node = malloc(sizeof(Lnode));
+        node->data = a;
+        node->next = s1;
+        NSLog(@"%p", node->next);
+        s1 = node;
+        NSLog(@"%d", node->data);
+        scanf("%d", &a);
+    }
     // 最后返回链表
     return s1;
 }
@@ -33,14 +43,36 @@ LinkList createAList() {
  @param node 被删结点
  */
 void deleteNode(LinkList node) {
-    node->next = NULL;
-    node->data = 0;
-    free(node);
+    // 1、先找到尾结点
+    while (node->next == NULL) {
+        
+    }
+}
+/**
+ 向表中添加元素
+ @param list 需要添加元素的表
+ */
+void addElementFromBackward(LinkList list) {
+
+}
+/**
+ 展示表中的所有元素
+ @param list 需要展示的表
+ */
+void displayAllElement(LinkList list) {
+    Lnode *node = list;
+    int count = 0;
+    while (node->next != NULL) {
+        count++;
+        NSLog(@"%d", node->data);
+        node = node->next;
+    }
+    NSLog(@"%d", node->data);
 }
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        LinkList l1 = createAList();
-        Lnode *s1 = malloc(sizeof(Lnode));
+        LinkList list = createAListFromForward();
+        displayAllElement(list);
     }
     return 0;
 }
