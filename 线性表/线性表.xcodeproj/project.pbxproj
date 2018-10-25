@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18CD851121817395007F53CB /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 18CD851021817395007F53CB /* main.c */; };
 		6E2A086C215E5D6300ABA0BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A086B215E5D6300ABA0BA /* main.m */; };
 		6E4D0D0A216CAE2300216BC9 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D0D09216CAE2300216BC9 /* main.c */; };
 		6E4D0D15216CAE2C00216BC9 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E4D0D14216CAE2C00216BC9 /* main.c */; };
@@ -14,6 +15,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		18CD850C21817395007F53CB /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		6E2A0867215E5D6300ABA0BA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -53,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18CD850E21817395007F53CB /* 二叉树 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "二叉树"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CD851021817395007F53CB /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		6E2A0869215E5D6300ABA0BA /* 链表 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "链表"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2A086B215E5D6300ABA0BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6E4D0D07216CAE2300216BC9 /* 堆栈 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "堆栈"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +76,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		18CD850B21817395007F53CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E2A0866215E5D6300ABA0BA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -95,6 +114,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18CD850F21817395007F53CB /* 二叉树 */ = {
+			isa = PBXGroup;
+			children = (
+				18CD851021817395007F53CB /* main.c */,
+			);
+			path = "二叉树";
+			sourceTree = "<group>";
+		};
 		6E2A086A215E5D6300ABA0BA /* 链表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +153,7 @@
 				6E2A086A215E5D6300ABA0BA /* 链表 */,
 				6E4D0D08216CAE2300216BC9 /* 堆栈 */,
 				6E4D0D13216CAE2C00216BC9 /* 队列 */,
+				18CD850F21817395007F53CB /* 二叉树 */,
 				6E4D9F502150F4D800522BE4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,6 +165,7 @@
 				6E2A0869215E5D6300ABA0BA /* 链表 */,
 				6E4D0D07216CAE2300216BC9 /* 堆栈 */,
 				6E4D0D12216CAE2C00216BC9 /* 队列 */,
+				18CD850E21817395007F53CB /* 二叉树 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -152,6 +181,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		18CD850D21817395007F53CB /* 二叉树 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18CD851421817395007F53CB /* Build configuration list for PBXNativeTarget "二叉树" */;
+			buildPhases = (
+				18CD850A21817395007F53CB /* Sources */,
+				18CD850B21817395007F53CB /* Frameworks */,
+				18CD850C21817395007F53CB /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "二叉树";
+			productName = "二叉树";
+			productReference = 18CD850E21817395007F53CB /* 二叉树 */;
+			productType = "com.apple.product-type.tool";
+		};
 		6E2A0868215E5D6300ABA0BA /* 链表 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E2A086F215E5D6300ABA0BA /* Build configuration list for PBXNativeTarget "链表" */;
@@ -229,6 +275,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = itcenter;
 				TargetAttributes = {
+					18CD850D21817395007F53CB = {
+						CreatedOnToolsVersion = 10.0;
+					};
 					6E2A0868215E5D6300ABA0BA = {
 						CreatedOnToolsVersion = 10.0;
 					};
@@ -259,11 +308,20 @@
 				6E2A0868215E5D6300ABA0BA /* 链表 */,
 				6E4D0D06216CAE2300216BC9 /* 堆栈 */,
 				6E4D0D11216CAE2C00216BC9 /* 队列 */,
+				18CD850D21817395007F53CB /* 二叉树 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		18CD850A21817395007F53CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18CD851121817395007F53CB /* main.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6E2A0865215E5D6300ABA0BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,6 +357,26 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		18CD851221817395007F53CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9C6R6LR63;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		18CD851321817395007F53CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9C6R6LR63;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		6E2A086D215E5D6300ABA0BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -493,6 +571,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		18CD851421817395007F53CB /* Build configuration list for PBXNativeTarget "二叉树" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18CD851221817395007F53CB /* Debug */,
+				18CD851321817395007F53CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6E2A086F215E5D6300ABA0BA /* Build configuration list for PBXNativeTarget "链表" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
