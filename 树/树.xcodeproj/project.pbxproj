@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E037A282185EF5800A3C8B7 /* Stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E037A272185EF5800A3C8B7 /* Stack.c */; };
+		6E037A2B2185EF6F00A3C8B7 /* Tree.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E037A2A2185EF6F00A3C8B7 /* Tree.c */; };
 		6E47C3782181C53C003B4F80 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 6E47C3772181C53C003B4F80 /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +25,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E037A262185EF5800A3C8B7 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
+		6E037A272185EF5800A3C8B7 /* Stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Stack.c; sourceTree = "<group>"; };
+		6E037A292185EF6F00A3C8B7 /* Tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
+		6E037A2A2185EF6F00A3C8B7 /* Tree.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Tree.c; sourceTree = "<group>"; };
 		6E47C3742181C53C003B4F80 /* 二叉树 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "二叉树"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E47C3772181C53C003B4F80 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				6E47C3772181C53C003B4F80 /* main.c */,
+				6E037A292185EF6F00A3C8B7 /* Tree.h */,
+				6E037A2A2185EF6F00A3C8B7 /* Tree.c */,
+				6E037A262185EF5800A3C8B7 /* Stack.h */,
+				6E037A272185EF5800A3C8B7 /* Stack.c */,
 			);
 			path = "二叉树";
 			sourceTree = "<group>";
@@ -117,6 +127,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E037A282185EF5800A3C8B7 /* Stack.c in Sources */,
+				6E037A2B2185EF6F00A3C8B7 /* Tree.c in Sources */,
 				6E47C3782181C53C003B4F80 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
