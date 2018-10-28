@@ -42,18 +42,105 @@ BiTree init() {
     tree->rightChild = NULL;
     return tree;
 }
-// 在左结点上添加数据
-BiTree InsertNodeFromLeft (int data, BiTree tree) {
-    // 1、创建一个结点
+/**
+ 在左结点上添加数据
+ @param data 添加的数据
+ @param tree 双亲的结点
+ @return 形成的新树
+ */
+BiTree InsertNodeFromLeft(int data, BiTree tree) {
+    // 1、创建一个结点z
     TreeNode *node = malloc(sizeof(TreeNode));
     // 2、为结点中添加数据
     node->data = data;
+    node->leftChild = NULL;
+    node->rightChild = NULL;
     // 3、将结点添加到树的结点上
-    return node;
+    if (tree->leftChild == NULL) {
+        tree->leftChild = node;
+    } else {
+        printf("对不起，树有左子女了\n");
+        return NULL;
+    }
+    return tree;
+}
+BiTree InsertNodeFromRight(int data, BiTree tree){
+    TreeNode *node = malloc(sizeof(TreeNode));
+    node->data = data;
+    if (tree->rightChild == NULL) {
+        tree->rightChild = node;
+    } else {
+        printf("对不起，树已经有右子女了");
+        return NULL;
+    }
+    return tree;
+}
+/**
+ 生成一棵以 data 为根结点的数据域值以 lbt 和 rbt 为左右子树的二叉树
+ @param data 保存的数据
+ @param lbt 左子树
+ @param rbt 右子树
+ @return 创建好的子树
+ */
+BiTree create(int data, BiTree lbt, BiTree rbt) {
+    BiTree p;
+    if ((p = (TreeNode *)malloc(sizeof(TreeNode))) == NULL) {
+        return NULL;
+    }
+    p->data = data;
+    p->leftChild = lbt;
+    p->rightChild = rbt;
+    return p;
+}
+/**
+ 删除一棵树
+ @param tree 树的结点
+ */
+void FreeTree(BiTree tree);
+/*
+ 有关二叉树的遍历，有三种方法：前序遍历，中序遍历，后序遍历，广度遍历。
+ */
+void visitNode(BiTree tree){
+    TreeNode *node = tree;
+}
+/**
+ 树的前序遍历
+ 算法：若二叉树为空，遍历结束。否则，
+ ⑴ 访问根结点；
+ ⑵ 先序遍历根结点的左子树；
+ ⑶ 先序遍历根结点的右子树。
+ @param tree 树的结点
+ */
+void DLR(BiTree tree) {
+    printf("%d\n", tree->data);
+    if (tree != NULL) {
+        visitNode(tree);
+        DLR(tree->leftChild);
+        DLR(tree->rightChild);
+    } else {
+        return;
+    }
+}
+/**
+ 树的中序遍历
+ @param tree 树的结点
+ */
+void LDR(BiTree tree) {
+    if (tree != NULL) {
+    }
+}
+/**
+ 树的后续遍历
+ @param tree 树的结点
+ */
+void LRD(BiTree tree) {
+    if (tree != NULL) {
+    }
 }
 int main(int argc, const char * argv[]) {
     BiTree tree = init();
     tree->leftChild = InsertNodeFromLeft(12, tree);
+    tree->rightChild = InsertNodeFromRight(23, tree);
+    printf("%d\n", tree->leftChild->data);
     return 0;
 }
-
