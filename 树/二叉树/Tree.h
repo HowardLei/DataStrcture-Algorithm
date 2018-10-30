@@ -75,6 +75,10 @@ BiTree create(int data, BiTree lbt, BiTree rbt);
 void FreeTree(BiTree tree);
 /*
  有关二叉树的遍历，有三种方法：前序遍历，中序遍历，后序遍历，广度遍历。
+ 注意：这里面函数名的字母解释分别如下
+ D：根
+ L：左子树
+ R：右子树
  */
 /**
  树的前序遍历
@@ -103,4 +107,5 @@ void LDR(BiTree tree);
  @param tree 树的结点
  */
 void LRD(BiTree tree);
+
 #endif /* Tree_h */

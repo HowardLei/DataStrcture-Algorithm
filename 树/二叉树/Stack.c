@@ -18,16 +18,30 @@ bool hasData(TreeStack *stack) {
     }
 }
 
-void addData(int data, TreeStack *stack) {
+bool stackFull(TreeStack *stack) {
+    if (stack->top == MAXSIZE - 1) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void inStack(int data, TreeStack *stack) {
     stack->top++;
     stack->data[stack->top] = data;
 }
 
-void deleteData(TreeStack *stack) {
+int outStack(TreeStack *stack) {
     if (hasData(stack)) {
+        int data = stack->data[stack->top];
         stack->data[stack->top] = 0;
         stack->top--;
+        return data;
     } else {
-        return;
+        return EOF;
     }
+}
+
+void freeStack(TreeStack *stack) {
+    free(stack);
 }

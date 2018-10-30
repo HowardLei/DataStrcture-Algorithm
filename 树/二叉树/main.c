@@ -1,9 +1,7 @@
 #include <stdio.h>
-
+#include "Stack.h"
 #include "Tree.h"
-/*
- 非递归版先序遍历
- */
+
 int main(int argc, const char * argv[]) {
     BiTree tree = initTree();
     InsertNodeFromLeft(12, tree);

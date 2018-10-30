@@ -25,14 +25,26 @@ TreeStack *initStack(void);
  */
 bool hasData(TreeStack *stack);
 /**
+ 判断栈是否满了
+ @param stack 需要判断的栈
+ @return 满为 true ，不满为 false 。
+ */
+bool stackFull(TreeStack *stack);
+/**
  为栈中添加元素
  @param data 元素
  @param stack 栈空间
  */
-void addData(int data, TreeStack *stack);
+void inStack(int data, TreeStack *stack);
 /**
- 删除栈顶的元素
- @param stack 需要删除元素的栈
+ 出栈算法
+ @param stack 需要出元素的栈
+ @return 出栈的值(如果是 -1，说明没有元素出栈)
  */
-void deleteData(TreeStack *stack);
+int outStack(TreeStack *stack);
+/**
+ 释放栈空间
+ @param stack 需要释放的栈
+ */
+void freeStack(TreeStack *stack);
 #endif /* Stack_h */
