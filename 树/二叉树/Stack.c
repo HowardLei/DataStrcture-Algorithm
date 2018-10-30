@@ -41,7 +41,9 @@ int outStack(TreeStack *stack) {
         return EOF;
     }
 }
-
+void traversalStack(TreeStack *stack) {
+    
+}
 void freeStack(TreeStack *stack) {
     free(stack);
 }

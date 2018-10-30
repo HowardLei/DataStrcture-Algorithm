@@ -11,7 +11,7 @@
 typedef struct stack{
     int data[MAXSIZE];
     int top;
-}TreeStack;
+} TreeStack;
 
 /**
  初始化一个栈
@@ -47,4 +47,5 @@ int outStack(TreeStack *stack);
  @param stack 需要释放的栈
  */
 void freeStack(TreeStack *stack);
+void traversalStack(TreeStack *stack);
 #endif /* Stack_h */

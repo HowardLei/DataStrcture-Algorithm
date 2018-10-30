@@ -1,14 +1,8 @@
-//
-//  Tree.h
-//  二叉树
-//
-//  Created by jyz on 2018/10/28.
-//
-
 #ifndef Tree_h
 #define Tree_h
 
 #include <stdio.h>
+#include "Stack.h"
 /*
  一、二叉树的定义
  二叉树(Binary Tree)是个有限元素的集合，该集合或者为空、或者由一个称为根(root)的元素及两个不相交的、被分别称为左子树和右子树的二叉树
@@ -74,11 +68,12 @@ BiTree create(int data, BiTree lbt, BiTree rbt);
  */
 void FreeTree(BiTree tree);
 /*
- 有关二叉树的遍历，有三种方法：前序遍历，中序遍历，后序遍历，广度遍历。
- 注意：这里面函数名的字母解释分别如下
- D：根
- L：左子树
- R：右子树
+ 有关二叉树的遍历，有两大方法：深度遍历，广度遍历
+    深度遍历的三种方法：前序遍历，中序遍历，后序遍历。
+    注意：深度遍历里面函数名的字母解释分别如下
+        D：根
+        L：左子树
+        R：右子树
  */
 /**
  树的前序遍历
@@ -107,5 +102,5 @@ void LDR(BiTree tree);
  @param tree 树的结点
  */
 void LRD(BiTree tree);
-
+void traverseFromStack(BiTree tree, TreeStack *stack);
 #endif /* Tree_h */
