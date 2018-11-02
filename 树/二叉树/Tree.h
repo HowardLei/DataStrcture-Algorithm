@@ -102,5 +102,17 @@ void LDR(BiTree tree);
  @param tree 树的结点
  */
 void LRD(BiTree tree);
+/**
+ 非递归先序遍历二叉树
+ 算法描述：
+    ① 若根结bt存在，bt进栈
+    ② 当栈空，遍历结束。否则
+    ③ 出栈结点p
+    ④ 访问结点p
+    ⑤ 若结点p->rc存在(右子女)，p->rc进栈
+    ⑥ 若结点p->lc存在，p->lc进栈
+    ⑦ 转 ②
+ @param tree 需要遍历的树
+ */
 void traverseFromStack(BiTree tree);
 #endif /* Tree_h */

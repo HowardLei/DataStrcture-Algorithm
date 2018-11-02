@@ -85,7 +85,9 @@ void LRD(BiTree tree) {
         return;
     }
 }
+void visitNode(TreeNode *node) {
 
+}
 void traverseFromStack(BiTree tree) {
     TreeNode *node = tree;
     TreeStack *stack = initStack();

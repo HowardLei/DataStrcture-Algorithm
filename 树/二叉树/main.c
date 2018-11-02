@@ -7,6 +7,7 @@ int main(int argc, const char * argv[]) {
     InsertNodeFromLeft(12, tree);
     InsertNodeFromRight(23, tree);
     InsertNodeFromLeft(1, tree->leftChild);
-    DLR(tree);
+//    DLR(tree);
+    traverseFromStack(tree);
     return 0;
 }
