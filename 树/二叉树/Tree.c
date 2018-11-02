@@ -85,3 +85,20 @@ void LRD(BiTree tree) {
         return;
     }
 }
+
+void traverseFromStack(BiTree tree) {
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        printf("%d\n", node->data);
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+        }
+    }
+    freeStack(stack);
+}

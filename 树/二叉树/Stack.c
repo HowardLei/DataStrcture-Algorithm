@@ -5,7 +5,7 @@ TreeStack *initStack() {
     TreeStack *stack = malloc(sizeof(TreeStack));
     stack->top = -1;
     for (int i = 0; i < MAXSIZE; i++) {
-        stack->data[i] = 0;
+        stack->data[i] = NULL;
     }
     return stack;
 }
@@ -26,19 +26,19 @@ bool stackFull(TreeStack *stack) {
     }
 }
 
-void inStack(int data, TreeStack *stack) {
+void inStack(TreeNode *node, TreeStack *stack) {
     stack->top++;
-    stack->data[stack->top] = data;
+    stack->data[stack->top] = node;
 }
 
-int outStack(TreeStack *stack) {
+TreeNode *outStack(TreeStack *stack) {
     if (hasData(stack)) {
-        int data = stack->data[stack->top];
+        TreeNode *node = stack->data[stack->top];
         stack->data[stack->top] = 0;
         stack->top--;
-        return data;
+        return node;
     } else {
-        return EOF;
+        return NULL;
     }
 }
 void traversalStack(TreeStack *stack) {

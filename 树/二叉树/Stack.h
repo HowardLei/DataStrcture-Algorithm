@@ -3,13 +3,14 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include "Tree.h"
 #define MAXSIZE 1024
 /*
  栈：是一种限制在表的一端进行添加和删除的线性表，允许插入、删除这一端称为栈顶，另一个固定端称为栈底。所以栈又称为后进先出的线性表（Last In First Out），简称LIFO表。
  */
 // 设置一个栈，数组中存放元素，并且保留一个 top 指针。用来判断栈顶元素。
 typedef struct stack{
-    int data[MAXSIZE];
+    struct bitnode *data[MAXSIZE];
     int top;
 } TreeStack;
 
@@ -31,17 +32,18 @@ bool hasData(TreeStack *stack);
  */
 bool stackFull(TreeStack *stack);
 /**
- 为栈中添加元素
- @param data 元素
- @param stack 栈空间
+ 向栈中添加元素
+ @param node 结点位置
+ @param stack 栈
  */
-void inStack(int data, TreeStack *stack);
+void inStack(struct bitnode *node, TreeStack *stack);
+
 /**
  出栈算法
- @param stack 需要出元素的栈
- @return 出栈的值(如果是 -1，说明没有元素出栈)
+ @param stack 栈
+ @return 结点位置
  */
-int outStack(TreeStack *stack);
+struct bitnode *outStack(TreeStack *stack);
 /**
  释放栈空间
  @param stack 需要释放的栈

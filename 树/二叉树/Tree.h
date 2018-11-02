@@ -102,5 +102,5 @@ void LDR(BiTree tree);
  @param tree 树的结点
  */
 void LRD(BiTree tree);
-void traverseFromStack(BiTree tree, TreeStack *stack);
+void traverseFromStack(BiTree tree);
 #endif /* Tree_h */
