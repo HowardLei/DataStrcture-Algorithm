@@ -49,5 +49,9 @@ struct bitnode *outStack(TreeStack *stack);
  @param stack 需要释放的栈
  */
 void freeStack(TreeStack *stack);
+/**
+ 遍历栈中的所有元素
+ @param stack 需要遍历的栈空间
+ */
 void traversalStack(TreeStack *stack);
 #endif /* Stack_h */
