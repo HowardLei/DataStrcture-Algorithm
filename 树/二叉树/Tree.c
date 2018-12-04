@@ -60,7 +60,7 @@ void DLR(BiTree tree) {
         printf("%d\n", tree->data);
     }
     if (tree != NULL) {
-        //        visitNode(tree);
+        // visitNode(tree);
         DLR(tree->leftChild);
         DLR(tree->rightChild);
     } else {
@@ -85,9 +85,7 @@ void LRD(BiTree tree) {
         return;
     }
 }
-void visitNode(TreeNode *node) {
 
-}
 void traverseFromStack(BiTree tree) {
     TreeNode *node = tree;
     TreeStack *stack = initStack();
@@ -103,4 +101,73 @@ void traverseFromStack(BiTree tree) {
         }
     }
     freeStack(stack);
+}
+
+int leafNodeNumber(BiTree tree) {
+    int leafNodes = 0;
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        printf("%d\n", node->data);
+        if (!(node->leftChild || node->rightChild)) {
+            leafNodes++;
+        }
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+        }
+    }
+    freeStack(stack);
+    return leafNodes;
+}
+
+int oneChildNode(BiTree tree) {
+    int oneChilds = 0;
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        printf("%d\n", node->data);
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+            if (!node->leftChild) {
+                oneChilds++;
+            }
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+            if (!node->rightChild) {
+                oneChilds++;
+            }
+        }
+    }
+    freeStack(stack);
+    return oneChilds;
+}
+
+int twoChildNode(BiTree tree) {
+    int twoChildNode = 0;
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        if (node->leftChild && node->rightChild) {
+            twoChildNode++;
+        }
+        printf("%d\n", node->data);
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+        }
+    }
+    freeStack(stack);
+    return twoChildNode;
 }

@@ -115,4 +115,22 @@ void LRD(BiTree tree);
  @param tree 需要遍历的树
  */
 void traverseFromStack(BiTree tree);
+/**
+ 统计二叉树中叶子结点数目
+ @param tree 树的根
+ @return 叶节点数目
+ */
+int leafNodeNumber(BiTree tree);
+/**
+ 统计二叉树中只有一个子女(度为1)的结点数目
+ @param tree 树的根
+ @return 一个子女的结点数
+ */
+int oneChildNode(BiTree tree);
+/**
+ 统计二叉树中有两个子女(度为2)的结点数目
+ @param tree 树的根
+ @return 两个子女的结点数
+ */
+int twoChildNode(BiTree tree);
 #endif /* Tree_h */
