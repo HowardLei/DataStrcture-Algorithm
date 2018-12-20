@@ -7,6 +7,7 @@
 
 #include "Tree.h"
 #include <stdlib.h>
+
 BiTree initTree() {
     BiTree tree = malloc(sizeof(BiTree));
     tree->data = 0;
@@ -56,9 +57,6 @@ BiTree create(int data, BiTree lbt, BiTree rbt) {
 }
 
 void DLR(BiTree tree) {
-    if (tree != NULL) {
-        printf("%d\n", tree->data);
-    }
     if (tree != NULL) {
         // visitNode(tree);
         DLR(tree->leftChild);
@@ -160,7 +158,6 @@ int twoChildNode(BiTree tree) {
         if (node->leftChild && node->rightChild) {
             twoChildNode++;
         }
-        printf("%d\n", node->data);
         if (node->rightChild) {
             inStack(node->rightChild, stack);
         }
@@ -170,4 +167,55 @@ int twoChildNode(BiTree tree) {
     }
     freeStack(stack);
     return twoChildNode;
+}
+
+void changeNode(TreeNode *node) {
+    TreeNode *node1 = node->leftChild;
+    node->leftChild = node->rightChild;
+    node->rightChild = node1;
+}
+
+void changeChild(BiTree tree) {
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        if (node->leftChild != NULL || node->rightChild == NULL) {
+            changeNode(node);
+        }
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+        }
+    }
+    freeStack(stack);
+}
+
+int emptyPointers(BiTree tree) {
+    int emptyPointerCount = 0;
+    TreeNode *node = tree;
+    TreeStack *stack = initStack();
+    inStack(node, stack);
+    while (hasData(stack)) {
+        TreeNode *node = outStack(stack);
+        if (node->rightChild) {
+            inStack(node->rightChild, stack);
+        } else {
+            emptyPointerCount++;
+        }
+        if (node->leftChild) {
+            inStack(node->leftChild, stack);
+        } else {
+            emptyPointerCount++;
+        }
+    }
+    freeStack(stack);
+    return emptyPointerCount;
+}
+// FIXME: 没改完
+int treeDepth(BiTree tree) {
+    return 0;
 }

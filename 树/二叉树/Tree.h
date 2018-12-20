@@ -133,4 +133,21 @@ int oneChildNode(BiTree tree);
  @return 两个子女的结点数
  */
 int twoChildNode(BiTree tree);
+/**
+ 将二叉树中的左右子女互换
+ @param tree 转化的树的根结点
+ */
+void changeChild(BiTree tree);
+/**
+ 统计空指针域的个数
+ @param tree 树的根节点
+ @return 空指针域个数
+ */
+int emptyPointers(BiTree tree);
+/**
+ 求二叉树的深度
+ @param tree 树的根节点
+ @return 这棵树的深度
+ */
+int treeDepth(BiTree tree);
 #endif /* Tree_h */
